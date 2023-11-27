@@ -23,4 +23,4 @@ cos(10)
 tan(10)
 
 # removendo variáveis #
-rm(soma, subtracao, multiplicacao, divisao)
+rm(soma, subtracao, multiplicacao, divisao, teste)
