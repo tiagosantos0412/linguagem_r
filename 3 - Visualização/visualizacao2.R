@@ -4,19 +4,19 @@ installed.packages()
 library(car)
 library(dplyr)
 
-# Carregamento do dataset mtcars e criação de um novo objeto 'carros'
+# Carregamento do dataset mtcars e criação de um novo objeto 'carros' #
 carros <- mtcars
 
-# Gráfico de dispersão com linha de regressão
+# Gráfico de dispersão com linha de regressão #
 plot(carros$wt, carros$mpg, main = "Gráfico de Dispersão",
      xlab = "Peso do Carro", ylab = "Milhas por galão", pch = 19)
 abline(lm(mpg ~ wt, data = carros), col = "red")
 
-# Salvando o gráfico de dispersão com linha de regressão em png
+# Salvando o gráfico de dispersão com linha de regressão em png #
 png("grafico_mtcars1.png")
 dev.off()
 
-# Gráfico de barras verticais
+# Gráfico de barras verticais #
 numero_carros <- table(carros$gear)
 barplot(numero_carros,
         main = "Gráfico de Barras Verticais",
@@ -24,11 +24,11 @@ barplot(numero_carros,
         ylab = "Quantidade de Carros",
         col = "blue")
 
-# Salvando o gráfico de barras verticais em png
+# Salvando o gráfico de barras verticais em png #
 png("grafico_mtcars2.png")
 dev.off()
 
-# Gráfico de barras horizontais
+# Gráfico de barras horizontais #
 barplot(numero_carros,
         main = "Gráfico de Barras Horizontais",
         horiz = TRUE,
@@ -36,7 +36,7 @@ barplot(numero_carros,
         ylab = "Engrenagens",
         col = "blue")
 
-# Gráfico de barras horizontais
+# Gráfico de barras horizontais #
 barplot(numero_carros,
         main = "Gráfico de Barras Horizontais",
         horiz = TRUE,
@@ -45,7 +45,7 @@ barplot(numero_carros,
         ylab = "Engrenagens",
         col = "blue")
 
-# Salvando o gráfico de barras horizontais em png
+# Salvando o gráfico de barras horizontais em png #
 png("grafico_mtcars3.png")
 dev.off()
 
@@ -91,4 +91,33 @@ pie(
   labels = rotulos,
   col = rainbow(length(rotulos)),
   main = "Quantidade percentual de alunos por curso"
+)
+
+# Gráfico de Linha #
+
+ano_temperatura <- data.frame(
+  "Ano" = c("2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"),
+  "Media_Temperatura" = c(25, 19, 35, 40, 20, 30, 25, 28, 30,38),
+  stringsAsFactors = FALSE
+)
+
+plot(
+  y = ano_temperatura$Media_Temperatura,
+  x = ano_temperatura$Ano,
+  type = "o",
+  col = "blue",
+  xlab = "Ano",
+  ylab = "Temperatura",
+  main = "Gráfico de Linha"
+)
+
+# Gráfico de boxplot #
+
+boxplot(
+  mpg~cyl,
+  data = carros,
+  main = "Gráfico de Boxplot",
+  xlab = "Número de cilindros",
+  ylab = "Milhas por galão",
+  col = "blue"
 )
