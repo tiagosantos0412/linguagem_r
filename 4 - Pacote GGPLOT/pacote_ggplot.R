@@ -54,3 +54,14 @@ ggplot(data = alunos, aes(x = Faculdade, fill = Faculdade)) +
   ggtitle("Histograma Horizontal") +
   theme_dark() + 
   theme(plot.title = element_text(hjust = 0.5))
+
+#########
+# Criando um Data Frame com dados de cilindros de carros #
+mtcars$cyl <- as.factor(mtcars$cyl)
+# Gráfico de pontos com regressão $ #
+ggplot(mtcars, aes(x=wt, y=mpg)) +
+  geom_point(shape = 18, color = "blue") +
+  geom_smooth(method = lm, color = "darkred") +
+  labs(title = "Gráfico de pontos")
+
+
