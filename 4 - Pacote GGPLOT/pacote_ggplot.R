@@ -63,5 +63,8 @@ ggplot(mtcars, aes(x=wt, y=mpg)) +
   geom_point(shape = 18, color = "blue") +
   geom_smooth(method = lm, color = "darkred") +
   labs(title = "Gráfico de pontos")
-
-
+# Gráfico de pontos por classe e com cores #
+ggplot(mtcars, aes(x=wt, y=mpg, shape=cyl, color=cyl)) +
+  geom_point() +
+  labs(title = "Gráfico de pontos") +
+  scale_color_brewer(palette = "Dark2")
