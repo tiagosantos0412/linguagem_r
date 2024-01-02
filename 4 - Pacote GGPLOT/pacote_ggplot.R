@@ -24,3 +24,24 @@ ggplot(alunos, aes(x = Faculdade))+
   geom_bar(stat = "count", fill = "#ff6666")+
   xlab("Cursos")+
   ylab("Quantidade total de alunos")
+
+#########
+# Histograma com cores para cada classe (automático) #
+ggplot(alunos, aes(x = Faculdade, fill = Faculdade)) +
+  geom_bar(stat = "count") + 
+  xlab("Faculdade") + 
+  ylab("Quantidade total de alunos") #+ guides(fill=FALSE)
+
+
+#########
+# Histograma com cores para cada classe (manual) #
+ggplot(alunos, aes(x = Faculdade, fill = Faculdade)) +
+  geom_bar(stat = "count") + 
+  xlab("Cursos") + 
+  ylab("Quantidade total de alunos") +
+  scale_fill_manual("Legenda", values = c("Administração" = "#BDB76B", "Ciências da Computação" = "#DAA520", "Engenharia" = "#B8860B", "Medicina" = "#8B4513")) +
+  labs(title = "Histograma") + 
+  theme_bw() + 
+  theme(plot.title = element_text(hjust = 0.5))
+
+
