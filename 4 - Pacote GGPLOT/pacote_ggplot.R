@@ -44,4 +44,13 @@ ggplot(alunos, aes(x = Faculdade, fill = Faculdade)) +
   theme_bw() + 
   theme(plot.title = element_text(hjust = 0.5))
 
-
+#########
+# Histograma Horizontal
+ggplot(data = alunos, aes(x = Faculdade, fill = Faculdade)) +
+  geom_bar(stat = "count") + 
+  coord_flip() +
+  xlab("Cursos") +
+  ylab("Quantidade total de alunos") +
+  ggtitle("Histograma Horizontal") +
+  theme_dark() + 
+  theme(plot.title = element_text(hjust = 0.5))
