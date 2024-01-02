@@ -68,3 +68,40 @@ ggplot(mtcars, aes(x=wt, y=mpg, shape=cyl, color=cyl)) +
   geom_point() +
   labs(title = "Gráfico de pontos") +
   scale_color_brewer(palette = "Dark2")
+
+#########
+#Gráfico de pizza basico #
+ggplot(alunos, aes(x="", fill=Faculdade)) +
+  geom_bar(stat = "count", width = 1) +
+  coord_polar("y", start = 0)
+
+ggplot(alunos, aes(x="", fill=Faculdade)) +
+  geom_bar(stat = "count", width = 1, color = "white") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  labs(title = "Gráfico de Pizza")
+
+#########
+# Gráfico de pizza completo #
+# Calculando quantos estudantes há em cada curso #
+count.data <- alunos %>%
+              count(Faculdade)
+# Realizando a soma acumulativa dos dados e criando rotulos #
+alunos_2 <- count.data %>%
+  mutate(Faculdade = factor(Faculdade, levels = c("Administração", "Ciências da Computação", "Engenharia", "Medicina")),
+         soma_acumulativa = cumsum(n),
+         midpoint = soma_acumulativa - n / 2,
+         label = paste0(round(n / sum(n) * 100, 1), "%"))
+
+#Gráfico de pizza com rótulos #
+ggplot(alunos_2, aes(x = 1, weight = n, fill = Faculdade)) +
+  geom_bar(width = 1, position = "stack") +
+  coord_polar(theta = "y") +
+  geom_text(aes(x = 1.3, y = midpoint, label = label)) +
+  scale_fill_brewer(palette="Set1") +  theme_void() +#
+  labs(title = "Gráfico de pizza com rótulos") + 
+  theme(plot.title = element_text(hjust = 0.5)) + # centralizando título
+  labs(fill='Cursos') 
+
+
+
